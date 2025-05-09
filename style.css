@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+}
+main .text{
+    width: 40%;
+}
+main .text h1{
+    font-size: 28px;
+}
+main .text p{
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+main .text  a{
+    background: white;
+    color: black;
+    text-decoration: none;
+    padding:10px;
+    border-radius: 4px;
+}
+main .text  a:hover{
+    background: gray;
+}
+@media screen and (max-width:800px) {
+    main{
+        flex-direction: column;
+    }
+    main .text{
+        width: 90%;
+        padding-top:10px ;
+    }
+}
+.reach_out{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 25px;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.second-section{
+    display: flex;
+    padding: 10px;
+    align-content: center;
+    background: white;
+    justify-content: center;
+    width: 100%;
+}
+.second-section .link{
+    width: 20%;
+    border: 1px solid rgba(158, 158, 158, 0.238);
+    height: auto;
+    box-shadow: 1px 1px 2px 1px  rgba(199, 188, 188, 0.43) inset;
+    border-radius: 10px;
+    margin: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+.second-section .link i{
+    font-size: 80px;
+}
+.second-section .link  a{
+    text-decoration: none;
+    background: black;
+    color: white;
+    font-family: sans-serif;
+    padding:8px;
+    border-radius: 4px;
+}
+.second-section .link  a:hover{
+    background: gray;
+}
+@media screen and (max-width:800px) {
+    .second-section{
+        flex-direction: column;
+        align-items: center;
+    }
+    .second-section .link{
+        width: 35%;
+    }
+    .second-section .link a{
+        width: 100%;
+        text-align: center;
+    }
+    .reach_out{
+        font-size: 18px;
+    }
+    main .subsec img{
+        width: 80%;
+    }
+}
+@media screen and (max-width:480px) {
+    .second-section .link{
+        width: 80%;
+    }
+}
+nav{
+    background-color: black;
+    color: antiquewhite;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-family: sans-serif;
+    padding: 20px;
+}
+nav ul{
+    list-style: none;
+}
+nav ul a{
+    color: white;
+    text-decoration: none;
+}
+nav ul a:hover{
+    color:gray;
+}
+.height{
+    height: 45vh;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: gray;
+}
+.active{
+    color: gray;
+}
+.link p{
+    margin-top: 10px;
+    font-family: sans-serif;
+}
