@@ -5,114 +5,592 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/muna.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <title>Testimonials</title>
+    <title>Testimonials - Munachi Otuije</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul a:hover,
+        nav ul a.active {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 2rem auto;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both, float 6s ease-in-out infinite;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info .email {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 1rem;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+                margin-top: 4rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .dark-mode-toggle {
+                right: 1rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonials-section {
+                padding: 3rem 1rem;
+            }
+
+            .testimonial-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        /* Smooth transitions for all elements */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="particles-js"></div>
 
     <nav>
-        <div class="logo"><a href="/">MunachiOtuije</a></div>
-        <ul><a href="testimonial.html" class="active">Testimonials</a></ul>
+        <div class="container">
+            <div class="logo"><a href="/">MunachiOtuije</a></div>
+            <ul><a href="testimonial.html" class="active">Testimonials</a></ul>
+        </div>
     </nav>
 
-    <main class="height">
-        <a href="#down">
-            <h1>Testimonials</h1>
-        </a>
-    </main>
-    <div class="second-section">
-        <div class="link">
-            <h3> Ucyndix@gmail.com</h3>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Client Testimonials</h1>
             <p>
-                He has worked with startups, SMEs, and enterprises, providing long-term development projects across
-                various industries.
+                Testimonials are a testament to the quality of work and dedication Munachi Otuije brings to every
+                project.
+                His clients have praised his technical expertise, creativity, and ability to deliver results that exceed
+                expectations.
             </p>
+            <img src="./images/munachi.jpg" alt="Munachi Otuije" class="hero-image">
+            <a href="#testimonials" class="cta-button">View Testimonials</a>
         </div>
-        <div class="link">
-            <h3>Ikenna.osuji@richiehealth.com</h3>
-            <p>
-                He has a strong presence in mobile app development and have received positive feedback from clients for
-                their user-friendly designs and high-quality apps.
-            </p>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title scroll-animation">What Clients Say</h2>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card scroll-animation">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">U</div>
+                    <div class="testimonial-info">
+                        <h3>Startup Founder</h3>
+                        <div class="email">Ucyndix@gmail.com</div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    "Munachi has worked with startups, SMEs, and enterprises, providing long-term development projects
+                    across various industries. His dedication to understanding our business needs and delivering
+                    tailored solutions has been exceptional. The quality of work consistently exceeds our expectations."
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card scroll-animation">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">I</div>
+                    <div class="testimonial-info">
+                        <h3>Ikenna Osuji</h3>
+                        <div class="email">Ikenna.osuji@richiehealth.com</div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    "Munachi has a strong presence in mobile app development and has consistently delivered
+                    user-friendly designs and high-quality apps. His attention to detail and commitment to creating
+                    intuitive user experiences sets him apart from other developers we've worked with."
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card scroll-animation">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">D</div>
+                    <div class="testimonial-info">
+                        <h3>Development Team</h3>
+                        <div class="email">Dandyx.com</div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    "Known for delivering web, app, AI, and automation solutions, Munachi has received praise for his
+                    technical expertise and strategic insight. His ability to translate complex requirements into
+                    elegant, functional solutions is truly remarkable. A pleasure to work with!"
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
         </div>
-        <div class="link">
-            <h3>Dandyx.net</h3>
-            <p>
-                Known for delivering web, app, AI, and automation solutions, Munachi has received praise for its
-                technical expertise and strategic insight.
-            </p>
-        </div>
-    </div>
-    <button class="toggler" id="darkModeToggle">Toggle Dark Mode</button>
+    </section>
 
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">
+        🌓
+    </button>
 
+    <div class="cursor"></div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js Configuration
+        document.addEventListener("DOMContentLoaded", function () {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80 },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.3
+                        }
+                    },
+                    color: { value: "#667eea" },
+                    line_linked: {
+                        enable: true,
+                        color: "#667eea",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        out_mode: "out"
+                    },
+                    opacity: {
+                        value: 0.6,
+                        random: true
+                    }
+                },
+                interactivity: {
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    },
+                    modes: {
+                        repulse: { distance: 100 },
+                        push: { particles_nb: 4 }
+                    }
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            darkModeToggle.textContent = isDark ? "☀️" : "🌓";
+        });
+
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animation').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', (e) => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', (e) => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
 </body>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-<script defer src="Particles.js"></script>
-<script>
-    const darkModeToggle = document.getElementById("darkModeToggle");
-
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-    });
-    document.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("show");
-    });
-
-    const animatedTexts = document.querySelectorAll(".text-animation");
-
-    window.addEventListener("scroll", () => {
-        animatedTexts.forEach((el) => {
-            const position = el.getBoundingClientRect().top;
-            if (position < window.innerHeight - 50) {
-                el.classList.add("visible");
-            }
-        });
-    });
-
-    const elements = document.querySelectorAll(".scroll-animation");
-
-    window.addEventListener("scroll", () => {
-        elements.forEach((el) => {
-            const position = el.getBoundingClientRect().top;
-            if (position < window.innerHeight - 100) {
-                el.classList.add("visible");
-            }
-        });
-    });
-
-    const cursor = document.createElement("div");
-    cursor.classList.add("cursor");
-    document.body.appendChild(cursor);
-
-    document.addEventListener("mousemove", (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    });
-    window.addEventListener("load", () => {
-        document.getElementById("preloader").style.display = "none";
-    });
-
-    document.addEventListener("mousemove", (e) => {
-        const x = (window.innerWidth / 2 - e.clientX) / 50;
-        const y = (window.innerHeight / 2 - e.clientY) / 50;
-        document.querySelector(".parallax").style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-    document.querySelectorAll(".button").forEach((button) => {
-        button.addEventListener("mousemove", (e) => {
-            const { offsetX, offsetY, target } = e;
-            const { offsetWidth, offsetHeight } = target;
-            const xMove = (offsetX / offsetWidth) * 30 - 15;
-            const yMove = (offsetY / offsetHeight) * 30 - 15;
-            target.style.transform = `translate(${xMove}px, ${yMove}px)`;
-        });
-
-        button.addEventListener("mouseleave", () => {
-            button.style.transform = "translate(0, 0)";
-        });
-    });
-</script>
 
 </html>

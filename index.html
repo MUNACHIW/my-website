@@ -4,138 +4,1056 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./images/muna.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.css">
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <title>Munachi Otuije - Full Stack Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>Munachiotuije</title>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both, float 6s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        /* Social Links Section */
+        .social-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-card a:hover::before {
+            left: 100%;
+        }
+
+        .social-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-chat {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .whatsapp-chat.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .whatsapp-header {
+            background: #128c7e;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-info h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .whatsapp-status {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .whatsapp-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .whatsapp-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .whatsapp-body {
+            padding: 1rem;
+            background: #e5ddd5;
+            min-height: 120px;
+            position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .whatsapp-message {
+            background: white;
+            padding: 0.75rem;
+            border-radius: 10px 10px 10px 2px;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .whatsapp-input-area {
+            padding: 0.75rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .whatsapp-input {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .whatsapp-input:focus {
+            border-color: #25d366;
+        }
+
+        .whatsapp-send {
+            background: #25d366;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            transition: background 0.2s ease;
+        }
+
+        .whatsapp-send:hover {
+            background: #128c7e;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(10px);
+        }
+
+        .whatsapp-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.2rem;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero-image img {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+                margin-top: 2rem;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .social-card {
+                padding: 1.5rem;
+            }
+
+            .dark-mode-toggle {
+                right: 1rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-section {
+                padding: 3rem 1rem;
+            }
+
+            .social-card {
+                padding: 1rem;
+            }
+
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+        }
+
+        body.dark-mode nav {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        body.dark-mode .social-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Smooth transitions for all elements */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="preloader"></div>
-
-    <nav>
-        <div class="logo"><a href="/">MunachiOtuije</a></div>
-        <ul><a href="testimonial.html">Testimonials</a></ul>
-    </nav>
-    <main>
-        <div class="text ">
-            <h1>
-                Munachi Otuije
-            </h1>
-            <p>
-                A dedicated software developer and entrepreneur
-                he specializes on full-stack and mobile app
-                development, built so many products for esteemed
-                clients. He is ready to work and do business with you.
-            </p>
-            <a href="#reach_out">
-                Reach Out
-            </a>
-        </div>
-        <div class="subsec">
-            <img src="./images/muna.jpg" alt="">
-        </div>
-    </main>
-    <h1 class="reach_out" id="reach_out">Reach Out To Me On the platforms Below👇</h1>
-    <div class="second-section">
-        <div class="link">
-            <i class="bi bi-instagram"></i>
-            <a href="https://www.instagram.com/muna_chiotuije?igsh=MTUxd2IycGs0ZWd3aQ==" id="ig"
-                onmouseover="document.getElementById('ig').innerHTML='Click'">Instagram</a>
-        </div>
-        <div class="link">
-            <i class="bi bi-whatsapp"></i>
-            <a href="https://wa.link/9a4765" id="wh"
-                onmouseover="document.getElementById('wh').innerHTML='Click'">Whatsapp</a>
-        </div>
-        <div class="link">
-            <i class="bi bi-envelope"></i>
-            <a href="mailto:munachiotuije@gmail.com" id="em"
-                onmouseover="document.getElementById('em').innerHTML='Click'">email</a>
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
         </div>
     </div>
-    <button class="toggler" id="darkModeToggle">Toggle Dark Mode</button>
+
     <div id="particles-js"></div>
 
+    <nav>
+        <div class="container">
+            <div class="logo"><a href="/">MunachiOtuije</a></div>
+            <ul><a href="testimonial.html">Testimonials</a></ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Munachi Otuije</h1>
+            <p>
+                A dedicated software developer and entrepreneur who specializes in full-stack and mobile app
+                development.
+                I've built amazing products for esteemed clients and I'm ready to work and do business with you.
+            </p>
+            <a href="#reach_out" class="cta-button">
+                Let's Connect
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="./images/muna.jpg" alt="Munachi Otuije">
+        </div>
+    </section>
+
+    <section class="social-section" id="reach_out">
+        <h2 class="section-title scroll-animation">Let's Connect</h2>
+        <p class="section-subtitle scroll-animation">Reach out to me on the platforms below 👇</p>
+
+        <div class="social-grid">
+            <div class="social-card scroll-animation">
+                <div class="social-icon">
+                    <i class="bi bi-instagram"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>Follow my journey and latest updates</p>
+                <a href="https://www.instagram.com/muna_chiotuije?igsh=MTUxd2IycGs0ZWd3aQ==" target="_blank">
+                    Connect on Instagram
+                </a>
+            </div>
+
+            <div class="social-card scroll-animation">
+                <div class="social-icon">
+                    <i class="bi bi-whatsapp"></i>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Let's have a direct conversation</p>
+                <a href="https://wa.link/9a4765" target="_blank">
+                    Chat on WhatsApp
+                </a>
+            </div>
+
+            <div class="social-card scroll-animation">
+                <div class="social-icon">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <p>Send me a professional message</p>
+                <a href="mailto:munachiotuije@gmail.com">
+                    Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">
+        🌓
+    </button>
+
+    <!-- WhatsApp Widget -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-tooltip" id="whatsappTooltip">
+            Chat with me on WhatsApp!
+        </div>
+        <button class="whatsapp-button" id="whatsappButton">
+            <i class="bi bi-whatsapp"></i>
+        </button>
+        <div class="whatsapp-chat" id="whatsappChat">
+            <div class="whatsapp-header">
+                <div class="whatsapp-avatar">M</div>
+                <div class="whatsapp-info">
+                    <h4>Munachi Otuije</h4>
+                    <p class="whatsapp-status">Typically replies instantly</p>
+                </div>
+                <button class="whatsapp-close" id="whatsappClose">×</button>
+            </div>
+            <div class="whatsapp-body">
+                <div class="whatsapp-message">
+                    Hi there! 👋<br>
+                    How can I help you today? Feel free to ask about my services or any project you have in mind.
+                </div>
+            </div>
+            <div class="whatsapp-input-area">
+                <input type="text" class="whatsapp-input" placeholder="Type your message..." id="whatsappInput">
+                <button class="whatsapp-send" id="whatsappSend">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cursor"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.classList.add('loaded');
+                }, 500);
+            }, 1000);
+        });
+
+        // Particles.js Configuration
+        document.addEventListener("DOMContentLoaded", function () {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80 },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.3
+                        }
+                    },
+                    color: { value: "#667eea" },
+                    line_linked: {
+                        enable: true,
+                        color: "#667eea",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        out_mode: "out"
+                    },
+                    opacity: {
+                        value: 0.6,
+                        random: true
+                    }
+                },
+                interactivity: {
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    },
+                    modes: {
+                        repulse: { distance: 100 },
+                        push: { particles_nb: 4 }
+                    }
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            darkModeToggle.textContent = isDark ? "☀️" : "🌓";
+        });
+
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animation').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('mouseenter', (e) => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', (e) => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // GSAP Animations for enhanced interactions
+        gsap.registerPlugin();
+
+        // Animate hero elements on load
+        gsap.timeline({ delay: 1 })
+            .from('.hero-content h1', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' })
+            .from('.hero-content p', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+            .from('.cta-button', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+            .from('.hero-image img', { scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.8');
+
+        // Enhanced button interactions
+        document.querySelectorAll('.social-card a, .cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
+            });
+        });
+
+        // Parallax effect for hero image
+        document.addEventListener('mousemove', (e) => {
+            const heroImage = document.querySelector('.hero-image img');
+            const x = (e.clientX - window.innerWidth / 2) / 50;
+            const y = (e.clientY - window.innerHeight / 2) / 50;
+
+            gsap.to(heroImage, {
+                rotationY: x,
+                rotationX: -y,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        });
+
+        // WhatsApp Widget Functionality
+        const whatsappButton = document.getElementById('whatsappButton');
+        const whatsappChat = document.getElementById('whatsappChat');
+        const whatsappClose = document.getElementById('whatsappClose');
+        const whatsappInput = document.getElementById('whatsappInput');
+        const whatsappSend = document.getElementById('whatsappSend');
+        const whatsappTooltip = document.getElementById('whatsappTooltip');
+
+        // Your WhatsApp number (replace with your actual number)
+        const whatsappNumber = '2349035943173'; // Replace with your WhatsApp number
+
+        // Show tooltip on hover
+        whatsappButton.addEventListener('mouseenter', () => {
+            whatsappTooltip.classList.add('show');
+        });
+
+        whatsappButton.addEventListener('mouseleave', () => {
+            whatsappTooltip.classList.remove('show');
+        });
+
+        // Toggle chat window
+        whatsappButton.addEventListener('click', () => {
+            whatsappChat.classList.toggle('active');
+            whatsappTooltip.classList.remove('show');
+            if (whatsappChat.classList.contains('active')) {
+                whatsappInput.focus();
+            }
+        });
+
+        // Close chat window
+        whatsappClose.addEventListener('click', () => {
+            whatsappChat.classList.remove('active');
+        });
+
+        // Send message function
+        function sendWhatsAppMessage() {
+            const message = whatsappInput.value.trim();
+            if (message) {
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+                whatsappInput.value = '';
+                whatsappChat.classList.remove('active');
+            }
+        }
+
+        // Send button click
+        whatsappSend.addEventListener('click', sendWhatsAppMessage);
+
+        // Enter key press
+        whatsappInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendWhatsAppMessage();
+            }
+        });
+
+        // Close chat when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.whatsapp-widget')) {
+                whatsappChat.classList.remove('active');
+            }
+        });
+
+        // Auto-show tooltip after a few seconds
+        setTimeout(() => {
+            whatsappTooltip.classList.add('show');
+            setTimeout(() => {
+                whatsappTooltip.classList.remove('show');
+            }, 3000);
+        }, 5000);
+    </script>
 </body>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-<script defer src="Particles.js"></script>
-
-
-<script>
-    const darkModeToggle = document.getElementById("darkModeToggle");
-
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-    });
-    document.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("show");
-    });
-
-    const animatedTexts = document.querySelectorAll(".text-animation");
-
-    window.addEventListener("scroll", () => {
-        animatedTexts.forEach((el) => {
-            const position = el.getBoundingClientRect().top;
-            if (position < window.innerHeight - 50) {
-                el.classList.add("visible");
-            }
-        });
-    });
-
-    const elements = document.querySelectorAll(".scroll-animation");
-
-    window.addEventListener("scroll", () => {
-        elements.forEach((el) => {
-            const position = el.getBoundingClientRect().top;
-            if (position < window.innerHeight - 100) {
-                el.classList.add("visible");
-            }
-        });
-    });
-
-    const cursor = document.createElement("div");
-    cursor.classList.add("cursor");
-    document.body.appendChild(cursor);
-
-    document.addEventListener("mousemove", (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    });
-    window.addEventListener("load", () => {
-        document.getElementById("preloader").style.display = "none";
-    });
-
-    document.addEventListener("mousemove", (e) => {
-        const x = (window.innerWidth / 2 - e.clientX) / 50;
-        const y = (window.innerHeight / 2 - e.clientY) / 50;
-        document.querySelector(".parallax").style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-    document.querySelectorAll(".button").forEach((button) => {
-        button.addEventListener("mousemove", (e) => {
-            const { offsetX, offsetY, target } = e;
-            const { offsetWidth, offsetHeight } = target;
-            const xMove = (offsetX / offsetWidth) * 30 - 15;
-            const yMove = (offsetY / offsetHeight) * 30 - 15;
-            target.style.transform = `translate(${xMove}px, ${yMove}px)`;
-        });
-
-        button.addEventListener("mouseleave", () => {
-            button.style.transform = "translate(0, 0)";
-        });
-    });
-
-
-
-
-
-
-</script>
 
 </html>
