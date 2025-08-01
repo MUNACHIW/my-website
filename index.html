@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="./images/muna.jpg" type="image/x-icon">
     <title>Munachi Otuije - Full Stack Developer</title>
     <style>
@@ -18,7 +18,6 @@
 
         html {
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
         body {
@@ -29,8 +28,6 @@
             line-height: 1.6;
             opacity: 0;
             transition: opacity 0.5s ease;
-            min-height: 100vh;
-            width: 100%;
         }
 
         body.loaded {
@@ -90,7 +87,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.75rem 1rem;
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -104,11 +101,10 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .logo a {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
             color: white;
@@ -116,13 +112,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            white-space: nowrap;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
         }
 
         nav ul a {
@@ -133,14 +128,14 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             position: relative;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-            white-space: nowrap;
         }
 
         nav ul a:hover,
         nav ul a.active {
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+
             transform: translateY(-2px);
         }
 
@@ -149,41 +144,36 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 5rem 1rem 2rem;
+            justify-content: space-between;
+            padding: 0 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 3rem;
         }
 
         .hero-content {
             flex: 1;
             max-width: 600px;
-            min-width: 300px;
-            text-align: center;
         }
 
         .hero-content h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: fadeInUp 1s ease-out;
             line-height: 1.2;
-            word-break: break-word;
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.85);
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.2s both;
-            max-width: 100%;
-            line-height: 1.6;
+            max-width: 500px;
         }
 
         .cta-button {
@@ -191,16 +181,15 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
             animation: fadeInUp 1s ease-out 0.4s both;
             position: relative;
             overflow: hidden;
-            white-space: nowrap;
         }
 
         .cta-button::before {
@@ -229,14 +218,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: 250px;
-            max-width: 400px;
-            margin: 0 auto;
         }
 
         .hero-image img {
-            width: clamp(200px, 40vw, 350px);
-            height: clamp(200px, 40vw, 350px);
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.2);
@@ -261,37 +247,34 @@
 
         /* Social Links Section */
         .social-section {
-            padding: 3rem 1rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            word-break: break-word;
         }
 
         .section-subtitle {
             text-align: center;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
         }
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .social-card {
@@ -300,12 +283,11 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
 
         .social-card::before {
@@ -331,7 +313,7 @@
         }
 
         .social-icon {
-            font-size: clamp(2rem, 6vw, 3rem);
+            font-size: 3rem;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
@@ -339,31 +321,19 @@
             background-clip: text;
         }
 
-        .social-card h3 {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            margin-bottom: 0.5rem;
-        }
-
-        .social-card p {
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
         .social-card a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: clamp(0.8rem, 3vw, 1rem);
+            font-size: 1.2rem;
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 2rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 25px;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            white-space: nowrap;
         }
 
         .social-card a::before {
@@ -389,15 +359,15 @@
         /* WhatsApp Widget */
         .whatsapp-widget {
             position: fixed;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 2rem;
+            right: 2rem;
             z-index: 1000;
             font-family: 'Inter', sans-serif;
         }
 
         .whatsapp-button {
-            width: clamp(50px, 12vw, 60px);
-            height: clamp(50px, 12vw, 60px);
+            width: 60px;
+            height: 60px;
             background: #25d366;
             border-radius: 50%;
             display: flex;
@@ -409,7 +379,8 @@
             animation: pulse 2s infinite;
             border: none;
             color: white;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-size: 1.8rem;
+
         }
 
         .whatsapp-button:hover {
@@ -419,9 +390,9 @@
 
         .whatsapp-chat {
             position: absolute;
-            bottom: calc(100% + 10px);
+            bottom: 80px;
             right: 0;
-            width: min(320px, 90vw);
+            width: 320px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -457,30 +428,18 @@
             justify-content: center;
             font-weight: bold;
             font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .whatsapp-info {
-            flex: 1;
-            min-width: 0;
         }
 
         .whatsapp-info h4 {
             margin: 0;
             font-size: 0.95rem;
             font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .whatsapp-status {
             font-size: 0.8rem;
             opacity: 0.9;
             margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .whatsapp-close {
@@ -493,7 +452,6 @@
             padding: 0.25rem;
             border-radius: 50%;
             transition: background 0.2s ease;
-            flex-shrink: 0;
         }
 
         .whatsapp-close:hover {
@@ -517,7 +475,6 @@
             font-size: 0.9rem;
             color: #333;
             line-height: 1.4;
-            word-wrap: break-word;
         }
 
         .whatsapp-input-area {
@@ -537,7 +494,6 @@
             font-size: 0.9rem;
             outline: none;
             font-family: inherit;
-            min-width: 0;
         }
 
         .whatsapp-input:focus {
@@ -556,7 +512,6 @@
             cursor: pointer;
             color: white;
             transition: background 0.2s ease;
-            flex-shrink: 0;
         }
 
         .whatsapp-send:hover {
@@ -565,7 +520,7 @@
 
         .whatsapp-tooltip {
             position: absolute;
-            bottom: calc(100% + 10px);
+            bottom: 70px;
             right: 0;
             background: rgba(0, 0, 0, 0.8);
             color: white;
@@ -577,8 +532,6 @@
             visibility: hidden;
             transition: all 0.3s ease;
             transform: translateY(10px);
-            max-width: 200px;
-            text-align: center;
         }
 
         .whatsapp-tooltip.show {
@@ -600,18 +553,17 @@
         .dark-mode-toggle {
             position: fixed;
             top: 50%;
-            right: 1rem;
+            right: 2rem;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
-            padding: 0.8rem;
+            padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 1000;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: white;
+            font-size: 1.2rem;
         }
 
         .dark-mode-toggle:hover {
@@ -644,7 +596,6 @@
             transition: transform 0.1s ease-out;
             z-index: 9999;
             mix-blend-mode: difference;
-            display: none;
         }
 
         /* Animations */
@@ -693,98 +644,62 @@
             transform: translateY(0);
         }
 
-        /* Improved Mobile Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.5rem 1rem;
-            }
-
-            nav .container {
-                gap: 0.5rem;
-            }
-
-            nav ul {
-                gap: 0.5rem;
-            }
-
-            nav ul a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
-            }
-
+        /* Responsive Design */
+        @media (max-width: 968px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 4rem 1rem 2rem;
-                gap: 2rem;
-                min-height: auto;
+                padding-top: 6rem;
             }
 
-            .hero-content {
-                max-width: 100%;
-                order: 2;
+            .hero-image img {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
             }
 
-            .hero-image {
-                order: 1;
-                margin-bottom: 1rem;
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+                margin-top: 2rem;
             }
 
             .social-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+
+            .social-card {
+                padding: 1.5rem;
+            }
+
+            .dark-mode-toggle {
+                right: 1rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-section {
+                padding: 3rem 1rem;
             }
 
             .social-card {
                 padding: 1rem;
             }
 
-            .whatsapp-chat {
-                width: calc(100vw - 2rem);
-                right: -1rem;
-            }
-
-            .dark-mode-toggle {
-                right: 0.5rem;
-                padding: 0.6rem;
-                top: auto;
-                bottom: 6rem;
-                transform: none;
-            }
-
-            .whatsapp-widget {
-                bottom: 0.5rem;
-                right: 0.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .social-section {
-                padding: 2rem 0.5rem;
-            }
-
-            .hero {
-                padding: 3rem 0.5rem 1rem;
-            }
-
-            .cta-button {
-                padding: 0.8rem 1.5rem;
-            }
-
-            .whatsapp-chat {
-                width: calc(100vw - 1rem);
-                right: -0.5rem;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .social-grid {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-
-            .social-card {
-                padding: 0.75rem;
+            .hero-image img {
+                width: 250px;
+                height: 250px;
             }
         }
 
@@ -800,21 +715,6 @@
         body.dark-mode .social-card {
             background: rgba(255, 255, 255, 0.02);
             border-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Desktop cursor only */
-        @media (hover: hover) and (pointer: fine) {
-            .cursor {
-                display: block;
-            }
-        }
-
-        /* Prevent horizontal scroll on all screen sizes */
-        .hero,
-        .social-section,
-        nav .container {
-            max-width: 100%;
-            overflow-x: hidden;
         }
 
         /* Smooth transitions for all elements */
@@ -953,49 +853,47 @@
 
         // Particles.js Configuration
         document.addEventListener("DOMContentLoaded", function () {
-            if (window.innerWidth > 768) {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: { value: window.innerWidth > 1200 ? 80 : 50 },
-                        size: {
-                            value: 3,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                size_min: 0.3
-                            }
-                        },
-                        color: { value: "#667eea" },
-                        line_linked: {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80 },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
                             enable: true,
-                            color: "#667eea",
-                            opacity: 0.4,
-                            width: 1
-                        },
-                        move: {
                             speed: 2,
-                            direction: "none",
-                            random: true,
-                            out_mode: "out"
-                        },
-                        opacity: {
-                            value: 0.6,
-                            random: true
+                            size_min: 0.3
                         }
                     },
-                    interactivity: {
-                        events: {
-                            onhover: { enable: true, mode: "repulse" },
-                            onclick: { enable: true, mode: "push" }
-                        },
-                        modes: {
-                            repulse: { distance: 100 },
-                            push: { particles_nb: 4 }
-                        }
+                    color: { value: "#667eea" },
+                    line_linked: {
+                        enable: true,
+                        color: "#667eea",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        out_mode: "out"
+                    },
+                    opacity: {
+                        value: 0.6,
+                        random: true
                     }
-                });
-            }
+                },
+                interactivity: {
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    },
+                    modes: {
+                        repulse: { distance: 100 },
+                        push: { particles_nb: 4 }
+                    }
+                }
+            });
         });
 
         // Dark Mode Toggle
@@ -1025,28 +923,24 @@
             observer.observe(el);
         });
 
-        // Custom cursor for desktop only
-        if (window.innerWidth > 768 && 'ontouchstart' in window === false) {
-            const cursor = document.querySelector('.cursor');
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
 
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('mouseenter', (e) => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
             });
-        }
 
-        // Enhanced hover effects for cards (desktop only)
-        if (window.innerWidth > 768) {
-            document.querySelectorAll('.social-card').forEach(card => {
-                card.addEventListener('mouseenter', (e) => {
-                    card.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-
-                card.addEventListener('mouseleave', (e) => {
-                    card.style.transform = 'translateY(0) scale(1)';
-                });
+            card.addEventListener('mouseleave', (e) => {
+                card.style.transform = 'translateY(0) scale(1)';
             });
-        }
+        });
 
         // Smooth navbar background on scroll
         window.addEventListener('scroll', () => {
@@ -1058,42 +952,40 @@
             }
         });
 
-        // GSAP Animations for enhanced interactions (desktop only)
-        if (typeof gsap !== 'undefined' && window.innerWidth > 768) {
-            gsap.registerPlugin();
+        // GSAP Animations for enhanced interactions
+        gsap.registerPlugin();
 
-            // Animate hero elements on load
-            gsap.timeline({ delay: 1 })
-                .from('.hero-content h1', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' })
-                .from('.hero-content p', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
-                .from('.cta-button', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-                .from('.hero-image img', { scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.8');
+        // Animate hero elements on load
+        gsap.timeline({ delay: 1 })
+            .from('.hero-content h1', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' })
+            .from('.hero-content p', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+            .from('.cta-button', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+            .from('.hero-image img', { scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.8');
 
-            // Enhanced button interactions
-            document.querySelectorAll('.social-card a, .cta-button').forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
-                });
+        // Enhanced button interactions
+        document.querySelectorAll('.social-card a, .cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
             });
 
-            // Parallax effect for hero image
-            document.addEventListener('mousemove', (e) => {
-                const heroImage = document.querySelector('.hero-image img');
-                const x = (e.clientX - window.innerWidth / 2) / 50;
-                const y = (e.clientY - window.innerHeight / 2) / 50;
-
-                gsap.to(heroImage, {
-                    rotationY: x,
-                    rotationX: -y,
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
             });
-        }
+        });
+
+        // Parallax effect for hero image
+        document.addEventListener('mousemove', (e) => {
+            const heroImage = document.querySelector('.hero-image img');
+            const x = (e.clientX - window.innerWidth / 2) / 50;
+            const y = (e.clientY - window.innerHeight / 2) / 50;
+
+            gsap.to(heroImage, {
+                rotationY: x,
+                rotationX: -y,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        });
 
         // WhatsApp Widget Functionality
         const whatsappButton = document.getElementById('whatsappButton');
@@ -1106,16 +998,14 @@
         // Your WhatsApp number (replace with your actual number)
         const whatsappNumber = '2349035943173'; // Replace with your WhatsApp number
 
-        // Show tooltip on hover (desktop only)
-        if (window.innerWidth > 768) {
-            whatsappButton.addEventListener('mouseenter', () => {
-                whatsappTooltip.classList.add('show');
-            });
+        // Show tooltip on hover
+        whatsappButton.addEventListener('mouseenter', () => {
+            whatsappTooltip.classList.add('show');
+        });
 
-            whatsappButton.addEventListener('mouseleave', () => {
-                whatsappTooltip.classList.remove('show');
-            });
-        }
+        whatsappButton.addEventListener('mouseleave', () => {
+            whatsappTooltip.classList.remove('show');
+        });
 
         // Toggle chat window
         whatsappButton.addEventListener('click', () => {
@@ -1160,34 +1050,13 @@
             }
         });
 
-        // Auto-show tooltip after a few seconds (desktop only)
-        if (window.innerWidth > 768) {
+        // Auto-show tooltip after a few seconds
+        setTimeout(() => {
+            whatsappTooltip.classList.add('show');
             setTimeout(() => {
-                whatsappTooltip.classList.add('show');
-                setTimeout(() => {
-                    whatsappTooltip.classList.remove('show');
-                }, 3000);
-            }, 5000);
-        }
-
-        // Handle orientation change
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        });
-
-        // Prevent zoom on input focus (iOS Safari)
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            const viewport = document.querySelector('meta[name=viewport]');
-            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-        }
-
-        // Performance optimization: disable animations on slow devices
-        const slowDevice = /Android.*Firefox|Opera Mini/i.test(navigator.userAgent);
-        if (slowDevice) {
-            document.body.style.setProperty('--animation-duration', '0s');
-        }
+                whatsappTooltip.classList.remove('show');
+            }, 3000);
+        }, 5000);
     </script>
 </body>
 
