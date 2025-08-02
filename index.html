@@ -26,49 +26,7 @@
             color: white;
             overflow-x: hidden;
             line-height: 1.6;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        body.loaded {
-            opacity: 1;
-        }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .preloader-content {
-            text-align: center;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(102, 126, 234, 0.3);
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            transition: all 0.3s ease;
         }
 
         /* Particles Background */
@@ -135,7 +93,6 @@
             background: rgba(255, 255, 255, 0.1);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-
             transform: translateY(-2px);
         }
 
@@ -164,7 +121,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out;
             line-height: 1.2;
         }
 
@@ -172,7 +128,6 @@
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.85);
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
             max-width: 500px;
         }
 
@@ -187,7 +142,6 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            animation: fadeInUp 1s ease-out 0.4s both;
             position: relative;
             overflow: hidden;
         }
@@ -227,7 +181,6 @@
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.6s both, float 6s ease-in-out infinite;
             position: relative;
         }
 
@@ -241,7 +194,6 @@
             border-radius: 50%;
             background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
             z-index: -1;
-            animation: rotate 20s linear infinite;
             opacity: 0.3;
         }
 
@@ -376,11 +328,9 @@
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
             border: none;
             color: white;
             font-size: 1.8rem;
-
         }
 
         .whatsapp-button:hover {
@@ -571,18 +521,47 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+        }
 
-            50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
-            }
+        body.dark-mode nav {
+            background: rgba(0, 0, 0, 0.95);
+        }
 
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
+        body.dark-mode .social-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .hero-content h1 {
+            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .section-title {
+            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .social-icon {
+            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .hero-content p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark-mode .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* Custom Cursor */
@@ -596,52 +575,6 @@
             transition: transform 0.1s ease-out;
             z-index: 9999;
             mix-blend-mode: difference;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .scroll-animation {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-animation.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Responsive Design */
@@ -703,20 +636,6 @@
             }
         }
 
-        /* Dark mode styles */
-        body.dark-mode {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
-        }
-
-        body.dark-mode nav {
-            background: rgba(0, 0, 0, 0.95);
-        }
-
-        body.dark-mode .social-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.05);
-        }
-
         /* Smooth transitions for all elements */
         * {
             transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
@@ -725,13 +644,6 @@
 </head>
 
 <body>
-    <div id="preloader">
-        <div class="preloader-content">
-            <div class="spinner"></div>
-            <p>Loading...</p>
-        </div>
-    </div>
-
     <div id="particles-js"></div>
 
     <nav>
@@ -744,7 +656,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Munachi Otuije</h1>
-            <p>
+            <p style="margin-top: 70px;">
                 A dedicated software developer and entrepreneur who specializes in full-stack and mobile app
                 development.
                 I've built amazing products for esteemed clients and I'm ready to work and do business with you.
@@ -759,11 +671,11 @@
     </section>
 
     <section class="social-section" id="reach_out">
-        <h2 class="section-title scroll-animation">Let's Connect</h2>
-        <p class="section-subtitle scroll-animation">Reach out to me on the platforms below 👇</p>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Reach out to me on the platforms below 👇</p>
 
         <div class="social-grid">
-            <div class="social-card scroll-animation">
+            <div class="social-card">
                 <div class="social-icon">
                     <i class="bi bi-instagram"></i>
                 </div>
@@ -774,7 +686,7 @@
                 </a>
             </div>
 
-            <div class="social-card scroll-animation">
+            <div class="social-card">
                 <div class="social-icon">
                     <i class="bi bi-whatsapp"></i>
                 </div>
@@ -785,7 +697,7 @@
                 </a>
             </div>
 
-            <div class="social-card scroll-animation">
+            <div class="social-card">
                 <div class="social-icon">
                     <i class="bi bi-envelope"></i>
                 </div>
@@ -837,22 +749,8 @@
     <div class="cursor"></div>
     <audio src="./images/Koffee-West-Indies-File-1-(JustNaija.com).mp3" autoplay loop></audio>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                    document.body.classList.add('loaded');
-                }, 500);
-            }, 1000);
-        });
-
         // Particles.js Configuration
         document.addEventListener("DOMContentLoaded", function () {
             particlesJS("particles-js", {
@@ -907,24 +805,6 @@
             darkModeToggle.textContent = isDark ? "☀️" : "🌓";
         });
 
-        // Smooth scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-animation').forEach(el => {
-            observer.observe(el);
-        });
-
         // Custom cursor
         const cursor = document.querySelector('.cursor');
 
@@ -952,41 +832,6 @@
             } else {
                 nav.style.background = 'rgba(0, 0, 0, 0.9)';
             }
-        });
-
-        // GSAP Animations for enhanced interactions
-        gsap.registerPlugin();
-
-        // Animate hero elements on load
-        gsap.timeline({ delay: 1 })
-            .from('.hero-content h1', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' })
-            .from('.hero-content p', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
-            .from('.cta-button', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-            .from('.hero-image img', { scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.8');
-
-        // Enhanced button interactions
-        document.querySelectorAll('.social-card a, .cta-button').forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
-            });
-
-            button.addEventListener('mouseleave', () => {
-                gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
-            });
-        });
-
-        // Parallax effect for hero image
-        document.addEventListener('mousemove', (e) => {
-            const heroImage = document.querySelector('.hero-image img');
-            const x = (e.clientX - window.innerWidth / 2) / 50;
-            const y = (e.clientY - window.innerHeight / 2) / 50;
-
-            gsap.to(heroImage, {
-                rotationY: x,
-                rotationX: -y,
-                duration: 0.5,
-                ease: 'power2.out'
-            });
         });
 
         // WhatsApp Widget Functionality
