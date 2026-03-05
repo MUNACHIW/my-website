@@ -22,14 +22,12 @@
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #2c2c4a 0%, #3a3a5c 50%, #4b5378 100%);
-
             color: white;
             overflow-x: hidden;
             line-height: 1.6;
             transition: all 0.3s ease;
         }
 
-        /* Particles Background */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -39,12 +37,10 @@
             z-index: -1;
         }
 
-        /* Navigation */
         nav {
             background: rgba(0, 0, 0, 0.9);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 2rem;
             position: fixed;
@@ -87,18 +83,15 @@
             padding: 0.5rem 1rem;
             border-radius: 25px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         nav ul a:hover,
         nav ul a.active {
             background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -106,7 +99,6 @@
             justify-content: center;
             text-align: center;
             padding: 0 2rem;
-            position: relative;
         }
 
         .hero-content {
@@ -122,14 +114,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            transition: all 0.3s ease;
         }
 
         .hero p {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 2rem;
-            transition: all 0.3s ease;
         }
 
         .hero-image {
@@ -140,7 +130,7 @@
             margin: 2rem auto;
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            display: block;
         }
 
         .cta-button {
@@ -160,7 +150,6 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
-        /* Testimonials Section */
         .testimonials-section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -176,7 +165,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            transition: all 0.3s ease;
         }
 
         .testimonials-grid {
@@ -188,8 +176,8 @@
 
         .testimonial-card {
             background: rgba(255, 255, 255, 0.05);
-            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
@@ -238,27 +226,23 @@
             font-weight: 700;
             color: white;
             margin-right: 1rem;
-            transition: all 0.3s ease;
         }
 
         .testimonial-info h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
-            transition: all 0.3s ease;
         }
 
         .testimonial-info .email {
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
         }
 
         .testimonial-content {
             font-size: 1rem;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
         }
 
         .testimonial-rating {
@@ -272,15 +256,14 @@
             font-size: 1.2rem;
         }
 
-        /* Dark Mode Toggle */
         .dark-mode-toggle {
             position: fixed;
             top: 50%;
             right: 2rem;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
             padding: 1rem;
@@ -295,7 +278,6 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        /* Dark mode styles */
         body.dark-mode {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
         }
@@ -309,13 +291,7 @@
             border-color: rgba(255, 255, 255, 0.05);
         }
 
-        body.dark-mode .hero h1 {
-            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        body.dark-mode .hero h1,
         body.dark-mode .section-title {
             background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
             -webkit-background-clip: text;
@@ -358,31 +334,6 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
         .scroll-animation {
             opacity: 0;
             transform: translateY(30px);
@@ -394,7 +345,18 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 1rem;
@@ -435,20 +397,6 @@
             }
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            background: rgba(102, 126, 234, 0.6);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.1s ease-out;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
-
-        /* Smooth transitions for all elements */
         * {
             transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
@@ -470,9 +418,8 @@
             <h1>Client Testimonials</h1>
             <p>
                 Testimonials are a testament to the quality of work and dedication Munachi Otuije brings to every
-                project.
-                His clients have praised his technical expertise, creativity, and ability to deliver results that exceed
-                expectations.
+                project. His clients have praised his technical expertise, creativity, and ability to deliver results
+                that exceed expectations.
             </p>
             <img src="./images/munachi.jpg" alt="Munachi Otuije" class="hero-image">
             <a href="#testimonials" class="cta-button">View Testimonials</a>
@@ -497,11 +444,8 @@
                     tailored solutions has been exceptional. The quality of work consistently exceeds our expectations."
                 </div>
                 <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
                 </div>
             </div>
 
@@ -519,11 +463,8 @@
                     intuitive user experiences sets him apart from other developers we've worked with."
                 </div>
                 <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
                 </div>
             </div>
 
@@ -541,129 +482,81 @@
                     elegant, functional solutions is truly remarkable. A pleasure to work with!"
                 </div>
                 <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">
-        🌓
-    </button>
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">🌓</button>
 
     <div class="cursor"></div>
-    <!-- <audio src="./images/Koffee-West-Indies-File-1-(JustNaija.com).mp3" autoplay loop></audio> -->
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles.js Configuration
+        // Particles.js
         document.addEventListener("DOMContentLoaded", function () {
             particlesJS("particles-js", {
                 particles: {
                     number: { value: 80 },
-                    size: {
-                        value: 3,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 2,
-                            size_min: 0.3
-                        }
-                    },
+                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.3 } },
                     color: { value: "#667eea" },
-                    line_linked: {
-                        enable: true,
-                        color: "#667eea",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        speed: 2,
-                        direction: "none",
-                        random: true,
-                        out_mode: "out"
-                    },
-                    opacity: {
-                        value: 0.6,
-                        random: true
-                    }
+                    line_linked: { enable: true, color: "#667eea", opacity: 0.4, width: 1 },
+                    move: { speed: 2, direction: "none", random: true, out_mode: "out" },
+                    opacity: { value: 0.6, random: true }
                 },
                 interactivity: {
                     events: {
                         onhover: { enable: true, mode: "repulse" },
                         onclick: { enable: true, mode: "push" }
                     },
-                    modes: {
-                        repulse: { distance: 100 },
-                        push: { particles_nb: 4 }
-                    }
+                    modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
                 }
             });
         });
 
-        // Dark Mode Toggle
+        // Dark Mode with localStorage
         const darkModeToggle = document.getElementById("darkModeToggle");
+
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+            darkModeToggle.textContent = "☀️";
+        }
 
         darkModeToggle.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
             const isDark = document.body.classList.contains("dark-mode");
             darkModeToggle.textContent = isDark ? "☀️" : "🌓";
+            localStorage.setItem("theme", isDark ? "dark" : "light");
         });
 
-        // Smooth scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.scroll-animation').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.scroll-animation').forEach(el => observer.observe(el));
 
         // Custom cursor
         const cursor = document.querySelector('.cursor');
-
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Enhanced hover effects for cards
+        // Card hover
         document.querySelectorAll('.testimonial-card').forEach(card => {
-            card.addEventListener('mouseenter', (e) => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', (e) => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
+            card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-10px) scale(1.02)');
+            card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0) scale(1)');
         });
 
-        // Smooth navbar background on scroll
+        // Navbar scroll
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(0, 0, 0, 0.95)';
-            } else {
-                nav.style.background = 'rgba(0, 0, 0, 0.9)';
-            }
-        });
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
+            document.querySelector('nav').style.background =
+                window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
         });
     </script>
 </body>

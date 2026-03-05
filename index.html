@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta description="Munachi Otuije - Full Stack Developer">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name='description' content='A dedicated software developer and entrepreneur who specializes in full-stack and mobile app
-                development.'>
+    <meta name='description'
+        content='A dedicated software developer and entrepreneur who specializes in full-stack and mobile app development.'>
     <link rel="shortcut icon" href="./images/muna.jpg" type="image/x-icon">
-    <title>Munachi Otuije - Full Stack Developer </title>
+    <title>Munachi Otuije - Full Stack Developer</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
@@ -26,14 +26,12 @@
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #2c2c4a 0%, #3a3a5c 50%, #4b5378 100%);
-
             color: white;
             overflow-x: hidden;
             line-height: 1.6;
             transition: all 0.3s ease;
         }
 
-        /* Particles Background */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -43,10 +41,8 @@
             z-index: -1;
         }
 
-        /* Navigation */
         nav {
             background: rgba(0, 0, 0, 0.9);
-            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -90,18 +86,15 @@
             padding: 0.5rem 1rem;
             border-radius: 25px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         nav ul a:hover,
         nav ul a.active {
             background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -171,7 +164,6 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
-        /* Hero Image */
         .hero-image {
             flex: 1;
             display: flex;
@@ -186,23 +178,8 @@
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            position: relative;
         }
 
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        /* Social Links Section */
         .social-section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -236,8 +213,8 @@
 
         .social-card {
             background: rgba(255, 255, 255, 0.05);
-            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
@@ -313,206 +290,180 @@
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
 
-        /* WhatsApp Widget */
-        .whatsapp-widget {
+        /* =============================================
+           QUICK CONTACT FLOATING WIDGET
+           ============================================= */
+        .contact-widget {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             z-index: 1000;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .whatsapp-button {
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-chat {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 320px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px) scale(0.8);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .whatsapp-chat.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        .whatsapp-header {
-            background: #128c7e;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-end;
             gap: 0.75rem;
         }
 
-        .whatsapp-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #25d366;
+        /* Action items (email, call, sms) */
+        .contact-actions {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .whatsapp-info h4 {
-            margin: 0;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .whatsapp-status {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
-        .whatsapp-close {
-            margin-left: auto;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.25rem;
-            border-radius: 50%;
-            transition: background 0.2s ease;
-        }
-
-        .whatsapp-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .whatsapp-body {
-            padding: 1rem;
-            background: #e5ddd5;
-            min-height: 120px;
-            position: relative;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .whatsapp-message {
-            background: white;
-            padding: 0.75rem;
-            border-radius: 10px 10px 10px 2px;
-            margin-bottom: 0.75rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            font-size: 0.9rem;
-            color: #333;
-            line-height: 1.4;
-        }
-
-        .whatsapp-input-area {
-            padding: 0.75rem;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .whatsapp-input {
-            flex: 1;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            padding: 0.6rem 1rem;
-            font-size: 0.9rem;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .whatsapp-input:focus {
-            border-color: #25d366;
-        }
-
-        .whatsapp-send {
-            background: #25d366;
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: white;
-            transition: background 0.2s ease;
-        }
-
-        .whatsapp-send:hover {
-            background: #128c7e;
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            white-space: nowrap;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.65rem;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            transform: translateY(10px);
+            transform: translateY(15px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
         }
 
-        .whatsapp-tooltip.show {
+        .contact-actions.open {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            pointer-events: all;
         }
 
-        .whatsapp-tooltip::after {
+        .contact-action-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-action-label {
+            background: rgba(15, 15, 30, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
+        }
+
+        .contact-action-item:hover .contact-action-label {
+            background: rgba(102, 126, 234, 0.25);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .contact-action-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            color: white;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .contact-action-item:hover .contact-action-icon {
+            transform: scale(1.12);
+        }
+
+        .action-email .contact-action-icon {
+            background: linear-gradient(135deg, #ea4335, #c23321);
+        }
+
+        .action-call .contact-action-icon {
+            background: linear-gradient(135deg, #34a853, #1e8c3a);
+        }
+
+        .action-sms .contact-action-icon {
+            background: linear-gradient(135deg, #4285f4, #1a5fc8);
+        }
+
+        /* Main trigger button */
+        .contact-fab {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-fab::before {
             content: '';
             position: absolute;
-            top: 100%;
-            right: 20px;
-            border: 6px solid transparent;
-            border-top-color: rgba(0, 0, 0, 0.8);
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        /* Dark Mode Toggle */
+        .contact-fab:hover::before {
+            opacity: 1;
+        }
+
+        .contact-fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7);
+        }
+
+        .contact-fab .fab-icon {
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+        }
+
+        .contact-fab.open .fab-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Pulse ring on the FAB */
+        .contact-fab::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(102, 126, 234, 0.45);
+            animation: pulseRing 2.5s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+
+            70% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* Dark Mode */
         .dark-mode-toggle {
             position: fixed;
             top: 50%;
             right: 2rem;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
             padding: 1rem;
@@ -527,7 +478,6 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        /* Dark mode styles */
         body.dark-mode {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
         }
@@ -541,20 +491,8 @@
             border-color: rgba(255, 255, 255, 0.05);
         }
 
-        body.dark-mode .hero-content h1 {
-            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.dark-mode .section-title {
-            background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        body.dark-mode .hero-content h1,
+        body.dark-mode .section-title,
         body.dark-mode .social-icon {
             background: linear-gradient(135deg, #8b9fe8 0%, #9d7cc2 100%);
             -webkit-background-clip: text;
@@ -583,7 +521,7 @@
             mix-blend-mode: difference;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 968px) {
             .hero {
                 flex-direction: column;
@@ -617,10 +555,6 @@
                 gap: 1.5rem;
             }
 
-            .social-card {
-                padding: 1.5rem;
-            }
-
             .dark-mode-toggle {
                 right: 1rem;
                 padding: 0.8rem;
@@ -632,17 +566,12 @@
                 padding: 3rem 1rem;
             }
 
-            .social-card {
-                padding: 1rem;
-            }
-
             .hero-image img {
                 width: 250px;
                 height: 250px;
             }
         }
 
-        /* Smooth transitions for all elements */
         * {
             transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
@@ -664,12 +593,10 @@
             <h1>Munachi Otuije</h1>
             <p style="margin-top: 70px;">
                 A dedicated software developer and entrepreneur who specializes in full-stack and mobile app
-                development.
-                I've built amazing products for esteemed clients and I'm ready to work and do business with you.
+                development. I've built amazing products for esteemed clients and I'm ready to work and do business with
+                you.
             </p>
-            <a href="#reach_out" class="cta-button">
-                Let's Connect
-            </a>
+            <a href="#reach_out" class="cta-button">Let's Connect</a>
         </div>
         <div class="hero-image">
             <img src="./images/muna.jpg" alt="Munachi Otuije">
@@ -682,9 +609,7 @@
 
         <div class="social-grid">
             <div class="social-card">
-                <div class="social-icon">
-                    <i class="bi bi-instagram"></i>
-                </div>
+                <div class="social-icon"><i class="bi bi-instagram"></i></div>
                 <h3>Instagram</h3>
                 <p>Follow my journey and latest updates</p>
                 <a href="https://www.instagram.com/muna_chiotuije?igsh=MTUxd2IycGs0ZWd3aQ==" target="_blank">
@@ -693,223 +618,131 @@
             </div>
 
             <div class="social-card">
-                <div class="social-icon">
-                    <i class="bi bi-whatsapp"></i>
-                </div>
-                <h3>WhatsApp</h3>
-                <p>Let's have a direct conversation</p>
-                <a href="https://wa.link/9a4765" target="_blank">
-                    Chat on WhatsApp
-                </a>
+                <div class="social-icon"><i class="bi bi-telephone-fill"></i></div>
+                <h3>Phone</h3>
+                <p>Give me a call — let's talk business</p>
+                <a href="tel:+2349035943173">Call Now</a>
             </div>
 
             <div class="social-card">
-                <div class="social-icon">
-                    <i class="bi bi-envelope"></i>
-                </div>
+                <div class="social-icon"><i class="bi bi-envelope"></i></div>
                 <h3>Email</h3>
                 <p>Send me a professional message</p>
-                <a href="mailto:munachiotuije@gmail.com">
-                    Send Email
-                </a>
+                <a href="/cdn-cgi/l/email-protection#1d7068737c7e75747269687477785d7a707c7471337e7270">Send Email</a>
             </div>
         </div>
     </section>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">
-        🌓
-    </button>
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">🌓</button>
 
-    <!-- WhatsApp Widget -->
-    <div class="whatsapp-widget">
-        <div class="whatsapp-tooltip" id="whatsappTooltip">
-            Chat with me on WhatsApp!
+    <!-- Quick Contact Floating Widget -->
+    <div class="contact-widget">
+        <div class="contact-actions" id="contactActions">
+
+            <!-- Email -->
+            <a href="/cdn-cgi/l/email-protection#016c746f606269686e7574686b6441666c60686d2f626e6c"
+                class="contact-action-item action-email" title="Send Email">
+                <span class="contact-action-label">Send Email</span>
+                <span class="contact-action-icon"><i class="bi bi-envelope-fill"></i></span>
+            </a>
+
+            <!-- Call -->
+            <a href="tel:+2349035943173" class="contact-action-item action-call" title="Call Me">
+                <span class="contact-action-label">Call Me</span>
+                <span class="contact-action-icon"><i class="bi bi-telephone-fill"></i></span>
+            </a>
+
+            <!-- SMS -->
+            <a href="sms:+2349035943173" class="contact-action-item action-sms" title="Send SMS">
+                <span class="contact-action-label">Send SMS</span>
+                <span class="contact-action-icon"><i class="bi bi-chat-dots-fill"></i></span>
+            </a>
+
         </div>
-        <button class="whatsapp-button" id="whatsappButton">
-            <i class="bi bi-whatsapp"></i>
+
+        <button class="contact-fab" id="contactFab" title="Contact Me">
+            <i class="bi bi-plus-lg fab-icon"></i>
         </button>
-        <div class="whatsapp-chat" id="whatsappChat">
-            <div class="whatsapp-header">
-                <div class="whatsapp-avatar">M</div>
-                <div class="whatsapp-info">
-                    <h4>Munachi Otuije</h4>
-                    <p class="whatsapp-status">Typically replies instantly</p>
-                </div>
-                <button class="whatsapp-close" id="whatsappClose">×</button>
-            </div>
-            <div class="whatsapp-body">
-                <div class="whatsapp-message">
-                    Hi there! 👋<br>
-                    How can I help you today? Feel free to ask about my services or any project you have in mind.
-                </div>
-            </div>
-            <div class="whatsapp-input-area">
-                <input type="text" class="whatsapp-input" placeholder="Type your message..." id="whatsappInput">
-                <button class="whatsapp-send" id="whatsappSend">
-                    <i class="bi bi-send"></i>
-                </button>
-            </div>
-        </div>
     </div>
 
     <div class="cursor"></div>
-    <!-- <audio src="./images/Koffee-West-Indies-File-1-(JustNaija.com).mp3" autoplay loop></audio> -->
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles.js Configuration
+        // Particles.js
         document.addEventListener("DOMContentLoaded", function () {
             particlesJS("particles-js", {
                 particles: {
                     number: { value: 80 },
-                    size: {
-                        value: 3,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 2,
-                            size_min: 0.3
-                        }
-                    },
+                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.3 } },
                     color: { value: "#667eea" },
-                    line_linked: {
-                        enable: true,
-                        color: "#667eea",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        speed: 2,
-                        direction: "none",
-                        random: true,
-                        out_mode: "out"
-                    },
-                    opacity: {
-                        value: 0.6,
-                        random: true
-                    }
+                    line_linked: { enable: true, color: "#667eea", opacity: 0.4, width: 1 },
+                    move: { speed: 2, direction: "none", random: true, out_mode: "out" },
+                    opacity: { value: 0.6, random: true }
                 },
                 interactivity: {
                     events: {
                         onhover: { enable: true, mode: "repulse" },
                         onclick: { enable: true, mode: "push" }
                     },
-                    modes: {
-                        repulse: { distance: 100 },
-                        push: { particles_nb: 4 }
-                    }
+                    modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
                 }
             });
         });
 
-        // Dark Mode Toggle
+        // Dark Mode with localStorage persistence
         const darkModeToggle = document.getElementById("darkModeToggle");
+
+        // Apply saved preference on page load
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+            darkModeToggle.textContent = "☀️";
+        }
 
         darkModeToggle.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
             const isDark = document.body.classList.contains("dark-mode");
             darkModeToggle.textContent = isDark ? "☀️" : "🌓";
+            localStorage.setItem("theme", isDark ? "dark" : "light");
         });
 
         // Custom cursor
         const cursor = document.querySelector('.cursor');
-
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Enhanced hover effects for cards
+        // Card hover
         document.querySelectorAll('.social-card').forEach(card => {
-            card.addEventListener('mouseenter', (e) => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', (e) => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
+            card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-10px) scale(1.02)');
+            card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0) scale(1)');
         });
 
-        // Smooth navbar background on scroll
+        // Navbar scroll
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(0, 0, 0, 0.95)';
-            } else {
-                nav.style.background = 'rgba(0, 0, 0, 0.9)';
-            }
+            document.querySelector('nav').style.background =
+                window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
         });
 
-        // WhatsApp Widget Functionality
-        const whatsappButton = document.getElementById('whatsappButton');
-        const whatsappChat = document.getElementById('whatsappChat');
-        const whatsappClose = document.getElementById('whatsappClose');
-        const whatsappInput = document.getElementById('whatsappInput');
-        const whatsappSend = document.getElementById('whatsappSend');
-        const whatsappTooltip = document.getElementById('whatsappTooltip');
+        // Contact FAB toggle
+        const fab = document.getElementById('contactFab');
+        const actions = document.getElementById('contactActions');
 
-        // Your WhatsApp number (replace with your actual number)
-        const whatsappNumber = '2349035943173'; // Replace with your WhatsApp number
-
-        // Show tooltip on hover
-        whatsappButton.addEventListener('mouseenter', () => {
-            whatsappTooltip.classList.add('show');
+        fab.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = actions.classList.toggle('open');
+            fab.classList.toggle('open', isOpen);
         });
 
-        whatsappButton.addEventListener('mouseleave', () => {
-            whatsappTooltip.classList.remove('show');
-        });
-
-        // Toggle chat window
-        whatsappButton.addEventListener('click', () => {
-            whatsappChat.classList.toggle('active');
-            whatsappTooltip.classList.remove('show');
-            if (whatsappChat.classList.contains('active')) {
-                whatsappInput.focus();
-            }
-        });
-
-        // Close chat window
-        whatsappClose.addEventListener('click', () => {
-            whatsappChat.classList.remove('active');
-        });
-
-        // Send message function
-        function sendWhatsAppMessage() {
-            const message = whatsappInput.value.trim();
-            if (message) {
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-                window.open(whatsappUrl, '_blank');
-                whatsappInput.value = '';
-                whatsappChat.classList.remove('active');
-            }
-        }
-
-        // Send button click
-        whatsappSend.addEventListener('click', sendWhatsAppMessage);
-
-        // Enter key press
-        whatsappInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendWhatsAppMessage();
-            }
-        });
-
-        // Close chat when clicking outside
+        // Close when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.whatsapp-widget')) {
-                whatsappChat.classList.remove('active');
+            if (!e.target.closest('.contact-widget')) {
+                actions.classList.remove('open');
+                fab.classList.remove('open');
             }
         });
-
-        // Auto-show tooltip after a few seconds
-        setTimeout(() => {
-            whatsappTooltip.classList.add('show');
-            setTimeout(() => {
-                whatsappTooltip.classList.remove('show');
-            }, 3000);
-        }, 5000);
     </script>
 </body>
 
