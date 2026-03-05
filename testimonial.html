@@ -8,6 +8,7 @@
     <title>Testimonials - Munachi Otuije</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
 
         * {
             margin: 0;
@@ -39,8 +40,8 @@
 
         nav {
             background: rgba(0, 0, 0, 0.9);
-            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 2rem;
             position: fixed;
@@ -62,12 +63,10 @@
             font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
-            color: white;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            transition: all 0.3s ease;
         }
 
         nav ul {
@@ -256,6 +255,7 @@
             font-size: 1.2rem;
         }
 
+        /* Dark Mode Toggle */
         .dark-mode-toggle {
             position: fixed;
             top: 50%;
@@ -278,6 +278,7 @@
             transform: translateY(-50%) scale(1.1);
         }
 
+        /* Dark mode */
         body.dark-mode {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
         }
@@ -334,6 +335,167 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
 
+        /* Quick Contact Floating Widget */
+        .contact-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.65rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .contact-actions.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .contact-action-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-action-label {
+            background: rgba(15, 15, 30, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
+        }
+
+        .contact-action-item:hover .contact-action-label {
+            background: rgba(102, 126, 234, 0.25);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .contact-action-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            color: white;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .contact-action-item:hover .contact-action-icon {
+            transform: scale(1.12);
+        }
+
+        .action-email .contact-action-icon {
+            background: linear-gradient(135deg, #ea4335, #c23321);
+        }
+
+        .action-call .contact-action-icon {
+            background: linear-gradient(135deg, #34a853, #1e8c3a);
+        }
+
+        .action-sms .contact-action-icon {
+            background: linear-gradient(135deg, #4285f4, #1a5fc8);
+        }
+
+        .contact-fab {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-fab::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-fab:hover::before {
+            opacity: 1;
+        }
+
+        .contact-fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7);
+        }
+
+        .contact-fab .fab-icon {
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .contact-fab.open .fab-icon {
+            transform: rotate(45deg);
+        }
+
+        .contact-fab::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(102, 126, 234, 0.45);
+            animation: pulseRing 2.5s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+
+            70% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* Scroll animation */
         .scroll-animation {
             opacity: 0;
             transform: translateY(30px);
@@ -345,6 +507,7 @@
             transform: translateY(0);
         }
 
+        /* Custom Cursor */
         .cursor {
             width: 20px;
             height: 20px;
@@ -491,6 +654,27 @@
 
     <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Theme">🌓</button>
 
+    <!-- Quick Contact Floating Widget -->
+    <div class="contact-widget">
+        <div class="contact-actions" id="contactActions">
+            <a href="mailto:munachiotuije@gmail.com" class="contact-action-item action-email" title="Send Email">
+                <span class="contact-action-label">Send Email</span>
+                <span class="contact-action-icon"><i class="bi bi-envelope-fill"></i></span>
+            </a>
+            <a href="tel:+2349035943173" class="contact-action-item action-call" title="Call Me">
+                <span class="contact-action-label">Call Me</span>
+                <span class="contact-action-icon"><i class="bi bi-telephone-fill"></i></span>
+            </a>
+            <a href="sms:+2349035943173" class="contact-action-item action-sms" title="Send SMS">
+                <span class="contact-action-label">Send SMS</span>
+                <span class="contact-action-icon"><i class="bi bi-chat-dots-fill"></i></span>
+            </a>
+        </div>
+        <button class="contact-fab" id="contactFab" title="Contact Me">
+            <i class="bi bi-plus-lg fab-icon"></i>
+        </button>
+    </div>
+
     <div class="cursor"></div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -557,6 +741,24 @@
         window.addEventListener('scroll', () => {
             document.querySelector('nav').style.background =
                 window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
+        });
+
+        // Contact FAB toggle
+        const fab = document.getElementById('contactFab');
+        const actions = document.getElementById('contactActions');
+
+        fab.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = actions.classList.toggle('open');
+            fab.classList.toggle('open', isOpen);
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.contact-widget')) {
+                actions.classList.remove('open');
+                fab.classList.remove('open');
+            }
         });
     </script>
 </body>
