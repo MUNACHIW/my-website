@@ -135,7 +135,7 @@
             width: calc(100% - 2.4rem);
         }
 
-        /* ── HAMBURGER ── */
+        /* ── HAMBURGER — FIX: removed display:none !important so media query works ── */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -150,6 +150,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
+            padding: 0;
+            position: relative;
+            z-index: 110;
         }
 
         .hamburger:hover {
@@ -180,20 +183,23 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* ── SIDEBAR OVERLAY ── */
+        /* ── SIDEBAR OVERLAY — FIX: use visibility+opacity instead of display:none ── */
         .sidebar-overlay {
-            display: none;
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.55);
             z-index: 150;
             backdrop-filter: blur(3px);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
         }
 
         .sidebar-overlay.open {
             opacity: 1;
+            visibility: visible;
+            pointer-events: all;
         }
 
         /* ── MOBILE SIDEBAR ── */
@@ -535,7 +541,7 @@
             gap: 2rem;
         }
 
-        /* ── TESTIMONIAL CARD (matches connect-card / portfolio-card style) ── */
+        /* ── TESTIMONIAL CARD ── */
         .testimonial-card {
             background: rgba(102, 126, 234, 0.06);
             border: 1px solid rgba(102, 126, 234, 0.15);
@@ -544,21 +550,19 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            transition: all 0.35s ease;
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease,
+                border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
         }
 
         .testimonial-card.visible {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.35s ease,
-                box-shadow 0.35s ease, background 0.35s ease;
         }
 
-        /* top accent glow (same pattern as connect-card::before) */
         .testimonial-card::before {
             content: '';
             position: absolute;
@@ -571,7 +575,6 @@
             pointer-events: none;
         }
 
-        /* left accent bar on hover */
         .testimonial-card::after {
             content: '';
             position: absolute;
@@ -593,6 +596,11 @@
             background: rgba(102, 126, 234, 0.1);
         }
 
+        /* FIX: Don't override the entry animation transform when not yet visible */
+        .testimonial-card:not(.visible):hover {
+            transform: translateY(30px);
+        }
+
         .testimonial-card:hover::before {
             top: -30%;
             right: -30%;
@@ -602,7 +610,6 @@
             transform: scaleY(1);
         }
 
-        /* Card header */
         .testimonial-header {
             display: flex;
             align-items: center;
@@ -611,7 +618,6 @@
             z-index: 5;
         }
 
-        /* Avatar icon box — matches .card-icon */
         .testimonial-avatar-icon {
             width: 60px;
             height: 60px;
@@ -655,7 +661,6 @@
             color: #667eea;
         }
 
-        /* Quote icon */
         .quote-icon {
             position: absolute;
             top: 0;
@@ -673,7 +678,6 @@
             z-index: 5;
         }
 
-        /* Divider */
         .testimonial-divider {
             height: 1px;
             background: rgba(102, 126, 234, 0.12);
@@ -681,7 +685,6 @@
             z-index: 5;
         }
 
-        /* Body text */
         .testimonial-body {
             font-size: 0.97rem;
             color: rgba(224, 224, 224, 0.8);
@@ -691,7 +694,6 @@
             flex: 1;
         }
 
-        /* Rating + tag row */
         .testimonial-footer {
             display: flex;
             align-items: center;
@@ -844,7 +846,7 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25);
         }
 
-        /* ── FAB (matches index.html exactly, positioned left) ── */
+        /* ── FAB ── */
         .fab-widget {
             position: fixed;
             bottom: 2rem;
@@ -995,18 +997,14 @@
             box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
         }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
+        /* ── RESPONSIVE — FIX: removed display:none !important from hamburger rule ── */
+        @media (max-width: 992px) {
             .nav-links {
                 display: none;
             }
 
             .hamburger {
                 display: flex;
-            }
-
-            .sidebar-overlay {
-                display: block;
             }
 
             nav {
@@ -1092,11 +1090,11 @@
     <nav>
         <div class="nav-inner">
             <div class="nav-left">
-                <a href="/" class="logo">MO</a>
+                <a href="index.html" class="logo">MO</a>
                 <ul class="nav-links">
-                    <li><a href="/#about" class="nav-link">About</a></li>
-                    <li><a href="/#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="/#connect" class="nav-link">Connect</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="index.html#connect" class="nav-link">Connect</a></li>
                     <li><a href="testimonial.html" class="nav-link active">Testimonials</a></li>
                 </ul>
             </div>
@@ -1128,21 +1126,12 @@
 
         <nav class="sidebar-nav">
             <p class="sidebar-nav-label">Navigation</p>
-            <a href="/" class="sidebar-nav-link">
-                <i class="bi bi-house-fill"></i> Home
-            </a>
-            <a href="/#about" class="sidebar-nav-link">
-                <i class="bi bi-person-fill"></i> About
-            </a>
-            <a href="/#portfolio" class="sidebar-nav-link">
-                <i class="bi bi-briefcase-fill"></i> Portfolio
-            </a>
-            <a href="/#connect" class="sidebar-nav-link">
-                <i class="bi bi-send-fill"></i> Connect
-            </a>
-            <a href="testimonial.html" class="sidebar-nav-link active">
-                <i class="bi bi-chat-quote-fill"></i> Testimonials
-            </a>
+            <a href="index.html" class="sidebar-nav-link"><i class="bi bi-house-fill"></i> Home</a>
+            <a href="index.html#about" class="sidebar-nav-link"><i class="bi bi-person-fill"></i> About</a>
+            <a href="index.html#portfolio" class="sidebar-nav-link"><i class="bi bi-briefcase-fill"></i> Portfolio</a>
+            <a href="index.html#connect" class="sidebar-nav-link"><i class="bi bi-send-fill"></i> Connect</a>
+            <a href="testimonial.html" class="sidebar-nav-link active"><i class="bi bi-chat-quote-fill"></i>
+                Testimonials</a>
         </nav>
 
         <div class="sidebar-socials">
@@ -1208,7 +1197,6 @@
 
         <div class="testimonials-grid">
 
-            <!-- Card 1 -->
             <div class="testimonial-card">
                 <div class="testimonial-header">
                     <div class="testimonial-avatar-icon">U</div>
@@ -1236,7 +1224,6 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="testimonial-card">
                 <div class="testimonial-header">
                     <div class="testimonial-avatar-icon">IO</div>
@@ -1264,7 +1251,6 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="testimonial-card">
                 <div class="testimonial-header">
                     <div class="testimonial-avatar-icon">D</div>
@@ -1295,7 +1281,7 @@
         </div>
     </section>
 
-    <!-- CTA BANNER -->
+    <!-- CTA BANNER — FIX: was href="/#portfolio", now correct path -->
     <div class="cta-banner">
         <div class="cta-banner-text">
             <h3>Ready to build something <span>amazing?</span></h3>
@@ -1305,16 +1291,14 @@
             <a href="mailto:munachiotuije@gmail.com" class="btn-primary">
                 <i class="bi bi-rocket-fill"></i> Start a Project
             </a>
-            <a href="/" class="btn-secondary">
+            <a href="index.html#portfolio" class="btn-secondary">
                 <i class="bi bi-briefcase"></i> View Work
             </a>
         </div>
     </div>
 
-    <!-- DARK MODE TOGGLE -->
     <button class="theme-btn" id="themeBtn" title="Toggle Theme">🌙</button>
 
-    <!-- FAB -->
     <div class="fab-widget">
         <div class="fab-actions" id="fabActions">
             <a href="mailto:munachiotuije@gmail.com" class="fab-action fab-email">
@@ -1339,7 +1323,6 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles — same config as index.html
         particlesJS("particles-js", {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -1363,15 +1346,13 @@
             retina_detect: true
         });
 
-        // Dark mode — synced with index.html via localStorage
+        /* ── Dark mode ── */
         const themeBtn = document.getElementById("themeBtn");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
         if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && prefersDark)) {
             document.body.classList.add("dark-mode");
             themeBtn.textContent = "☀️";
         }
-
         themeBtn.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
             const isDark = document.body.classList.contains("dark-mode");
@@ -1379,16 +1360,14 @@
             localStorage.setItem("theme", isDark ? "dark" : "light");
         });
 
-        // FAB toggle
+        /* ── FAB toggle ── */
         const fabMain = document.getElementById("fabMain");
         const fabActions = document.getElementById("fabActions");
-
         fabMain.addEventListener("click", (e) => {
             e.stopPropagation();
             const isOpen = fabActions.classList.toggle("open");
             fabMain.classList.toggle("open", isOpen);
         });
-
         document.addEventListener("click", (e) => {
             if (!e.target.closest(".fab-widget")) {
                 fabActions.classList.remove("open");
@@ -1396,7 +1375,7 @@
             }
         });
 
-        // Mobile sidebar
+        /* ── Mobile sidebar ── */
         const hamburger = document.getElementById("hamburger");
         const sidebar = document.getElementById("sidebar");
         const sidebarOverlay = document.getElementById("sidebarOverlay");
@@ -1420,40 +1399,40 @@
         sidebarClose.addEventListener("click", closeSidebar);
         sidebarOverlay.addEventListener("click", closeSidebar);
 
+        /* FIX: Sidebar nav links — close sidebar, navigate normally (cross-page links work fine) */
         document.querySelectorAll(".sidebar-nav-link").forEach(link => {
-            link.addEventListener("click", closeSidebar);
+            link.addEventListener("click", () => closeSidebar());
         });
 
-        // Custom cursor
+        /* ── Custom cursor ── */
         const cursor = document.getElementById("cursor");
         document.addEventListener("mousemove", (e) => {
             cursor.style.left = e.clientX - 10 + "px";
             cursor.style.top = e.clientY - 10 + "px";
         });
+        if (window.matchMedia("(hover: none)").matches) cursor.style.display = "none";
 
-        if (window.matchMedia("(hover: none)").matches) {
-            cursor.style.display = "none";
-        }
-
-        // Navbar scroll
-        const nav = document.querySelector("nav");
+        /* ── Navbar scroll ── */
         window.addEventListener("scroll", () => {
-            nav.classList.toggle("scrolled", window.scrollY > 50);
+            document.querySelector("nav").classList.toggle("scrolled", window.scrollY > 50);
         });
 
-        // Scroll-reveal for testimonial cards
+        /* ── FIX: Scroll-reveal stagger — track index per card, not per IntersectionObserver entry batch ── */
+        const cards = document.querySelectorAll(".testimonial-card");
         const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Find this card's index among ALL cards for correct stagger delay
+                    const idx = Array.from(cards).indexOf(entry.target);
                     setTimeout(() => {
                         entry.target.classList.add("visible");
-                    }, i * 120);
+                    }, idx * 150);
                     cardObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
-        document.querySelectorAll(".testimonial-card").forEach(el => cardObserver.observe(el));
+        cards.forEach(el => cardObserver.observe(el));
     </script>
 </body>
 
