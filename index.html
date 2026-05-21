@@ -525,6 +525,11 @@
             }
         }
 
+        .navbarup {
+            top: -300px;
+            background: red;
+        }
+
         /* CONNECT */
         .connect-section {
             padding: 7rem 2rem;
@@ -1180,7 +1185,7 @@
 <body>
     <div id="particles-js"></div>
 
-    <nav>
+    <nav id="navbar">
         <div class="nav-inner">
             <div class="nav-left">
                 <a href="index.html" class="logo">MO</a>
@@ -1489,6 +1494,18 @@
                 fabMain.classList.remove("open");
             }
         });
+
+        /* navbar */
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY < 100) {
+                navbar.classList.add("navbarup");
+            } else {
+                navbar.classList.remove("navbarup");
+            }
+        })
+
 
         /* ── Mobile sidebar ── */
         const hamburger = document.getElementById("hamburger");

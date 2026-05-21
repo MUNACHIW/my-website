@@ -493,6 +493,10 @@
             margin-top: 0.15rem;
         }
 
+        .navbarup {
+            top: -300px;
+        }
+
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -1087,7 +1091,7 @@
     <div id="particles-js"></div>
 
     <!-- NAV -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-inner">
             <div class="nav-left">
                 <a href="index.html" class="logo">MO</a>
@@ -1345,6 +1349,16 @@
             },
             retina_detect: true
         });
+
+        /* ── Navbar scroll effect ── */
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY < 100) {
+                navbar.classList.add("navbarup");
+            } else {
+                navbar.classList.remove("navbarup");
+            }
+        })
 
         /* ── Dark mode ── */
         const themeBtn = document.getElementById("themeBtn");
