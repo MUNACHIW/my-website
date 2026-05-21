@@ -58,7 +58,7 @@
             padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
-            top: 0;
+            top: -300px;
             z-index: 100;
             transition: all 0.3s ease;
         }
@@ -526,8 +526,7 @@
         }
 
         .navbarup {
-            top: -300px;
-            background: red;
+            top: 0;
         }
 
         /* CONNECT */
@@ -1499,7 +1498,7 @@
 
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY < 100) {
+            if (window.scrollY > 100) {
                 navbar.classList.add("navbarup");
             } else {
                 navbar.classList.remove("navbarup");
